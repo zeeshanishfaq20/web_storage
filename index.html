@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> My first webpage</title>
+    </head>
+
+    <body>
+        <h3> Form Data
+            <div id="NameVerify"></div>
+        </h3>
+        <h5> Session Storage
+            <div id="sessionstorage"></div>
+        </h5>
+        <h5> Local Storage
+            <div id="localstorage"></div>
+        </h5>
+        <hr>
+        First Name: <input type="text" id="firstname" name="fname" placeholder="First Name"><br><br>
+        Last Name: <input type="text" id="lastname" name="lname" placeholder="Last Name"><br><br>
+        Email ID: <input type="text" id="emailID" name="e-id" placeholder="zeeshan@gmail.com"><br><br>
+        Password: <input type="text" id="password" name="p-word" placeholder="Enter Password"> <br><br>
+        <br>
+        <button onclick="getUserInput()">Get User Input</button>
+        </hr>
+    </body>
+        <script>
+            function getUserInput() {
+                var firstName = document.getElementById('firstname').value;
+                var lastName = document.getElementById('lastname').value;
+                var EmailID = document.getElementById('emailID').value;
+                var PassWord = document.getElementById('password').value;
+                document.getElementById('NameVerify').innerHTML = firstName + ' ' + lastName + " " + EmailID + " "+ PassWord;
+            }
+            function Session_Storage() {
+                var firstName = document.getElementById('firstname').value;
+                var lastName = document.getElementById('lastname').value;
+                if (typeof(Storage) !== "undefined") {
+                    if (sessionStorage.clickcount) {
+                        sessionStorage.clickcount += firstName + ' ' + lastName;
+                    } else {
+                    sessionStorage.clickcount = firstName + ' ' + lastName;
+                    }
+                    document.getElementById("sessionstorage").innerHTML = sessionStorage.clickcount;
+                } else {
+                document.getElementById("sessionstorage").innerHTML = "Sorry, your browser does not support web storage...";
+                }
+            }
+            function Local_Storage() {
+                var EmailID = document.getElementById('emailID').value;
+                var PassWord = document.getElementById('password').value;
+                if (typeof(Storage) !== "undefined") {
+                    if (localStorage.clickcount1) {
+                        localStorage.clickcount1 += EmailID + ' ' + PassWord;
+                    } else {
+                        localStorage.clickcount1 = EmailID + ' ' + PassWord;
+                    }
+                    document.getElementById("localstorage").innerHTML = localStorage.clickcount1;
+                    } else {
+                    document.getElementById("localstorage").innerHTML = "Sorry, your browser does not support web storage...";
+                    }
+            }
+           
+        </script>   
+        </head>
+        <body>
+        <p><button onclick="Session_Storage()" type="button">Session Storage</button></p>
+        <p><button onclick="Local_Storage()" type="button">Local Storage</button></p>
+        <div id="NameVerify"></div>
+        <p>Click the button to see the counter increase.</p>
+        <p>Close the browser tab (or window), and try again, and the counter is reset for Session Storage.</p>
+        
+        </body>
+        </html>
+
+    <!-- <script>
+        function myFunction() {
+          document.getElementById("demo").innerHTML = "Hello World";
+        }
+        </script> -->
+</html>
